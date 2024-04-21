@@ -90,7 +90,7 @@ export function Recorder() {
           <img src="robot.gif" alt="image"  className="rounded-full"/>
         </div>
         <h1>Nova</h1>
-        <p>I'm a Virtual Assistant Nova, How may I help you?</p>
+        <p>I'm your virtual assistant Nova. How may I help you?</p>
       </div>
       <div className="input cursor-pointer">
         <button className="talk">
