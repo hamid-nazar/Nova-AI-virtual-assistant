@@ -66,4 +66,4 @@
   - Axios 
 
 ## Additional Notes
-The functionality for the inding the cheapest fligh between tow locations does not work very well due to significant delays in receiving response back from the API. As a result, using this functionality may not be very practical in real-world scenarios.
+The functionality for the finding the cheapest fligh between tow locations does not work very well due to the significant delays in receiving response back from the API. As a result, using this functionality may not be very practical in real-world scenarios.
