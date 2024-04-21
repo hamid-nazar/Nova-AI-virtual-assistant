@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import json
 import dotenv
 dotenv.load_dotenv()
 import os
@@ -68,5 +69,59 @@ def find_airport_id(city):
     }
     
     return requests.get(url, headers=headers, params=querystring).json()["data"][0]["id"]
+
+
+def get_exchange_rate_info_for_currency(currency):
+    url = f'https://v6.exchangerate-api.com/v6/{os.getenv("CURRENCY_API_KEY")}/latest/{currency}'
+    response = requests.get(url)
+    data = response.json()
+
+    return json.dumps(data)
+
+
+
+def add_reminder(reminder_text):
+   
+   file_name = "reminders.json"
+   
+   try:
+    with open(file_name, 'r') as user_file:
+        reminders = json.load(user_file)
+   except:
+    reminders = []
+   
+   reminders.append(reminder_text)
+   
+   with open(file_name, 'w') as user_file:
+        json.dump(reminders, user_file )
+   
+   
+        
+   return f"Reminder added: {reminder_text}" 
+
+
+
+def remove_reminder(reminder_text):
+   
+   file_name = "reminders.json"
+   
+   try:
+    with open(file_name, 'r') as user_file:
+        reminders = json.load(user_file)
+   except:
+    reminders = []
+   
+   reminders.remove(reminder_text)
+   
+   with open(file_name, 'w') as user_file:
+        json.dump(reminders, user_file )
+   
+   
+        
+   return f"Reminder removed: {reminder_text}"
+
+
+print(remove_reminder("Call John"))
+
 
 

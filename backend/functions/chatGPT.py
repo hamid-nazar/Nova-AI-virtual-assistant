@@ -3,7 +3,7 @@ import dotenv
 import os
 import json
 import datetime
-from functions.tasks import get_local_time, get_flight_info , get_weather_info
+from functions.tasks import add_reminder, get_cheapest_flight, get_local_time, get_flight_info, get_weather_info,remove_reminder, get_exchange_rate_info_for_currency
 from functions.database import get_recent_messages
 from functions.functions_descriptions import descriptions
 
@@ -37,37 +37,6 @@ def convert_speech_to_text(audio_file):
     return
 
 
-
-def get_chat_response(message):
-  
-  messages = get_recent_messages()
-  user_masege = {"role": "user", "content": message}
-  messages.append(user_masege)
-  
-  print(messages)
-  
-  try:
-    
-    response = openai.ChatCompletion.create(
-      model="gpt-3.5-turbo",
-      messages=messages)
-    
-    message_text = response["choices"][0]["message"]["content"]
-    
-    return message_text
-    
-  except Exception as e:
-    print(e)
-    return
-  
-  
-  
-  
-# alternative
-  
-
-
-
 def chat(message):
     #model="gpt-3.5-turbo-0613",
     messages = get_recent_messages()
@@ -83,6 +52,7 @@ def chat(message):
     print(response)
     
     output = response.choices[0].message
+    
     
     print(output)
     
@@ -158,6 +128,54 @@ def chat(message):
           
           return response
         
+        elif function_name == "get_exchange_rate_info_for_currency":
+          
+          print("GPT: called function " + function_name)
+          
+          currency = json.loads(output.tool_calls[0].function.arguments).get("currency")
+          
+          chosen_function = eval(function_name)
+          
+          exchange_rate = chosen_function(currency)
+          
+          messages.append({"role": "function", "name": function_name, "content": exchange_rate})
+          
+          response = fix_format(messages)
+          
+          return response
+        
+        elif function_name == "add_reminder":
+          
+          print("GPT: called function " + function_name)
+          
+          reminder = json.loads(output.tool_calls[0].function.arguments).get("reminder_text")
+          
+          chosen_function = eval(function_name)
+          
+          response = chosen_function(reminder)
+          
+          messages.append({"role": "function", "name": function_name, "content": response})
+          
+          response = fix_format(messages)
+          
+          return response
+        
+        elif function_name == "remove_reminder":
+          
+          print("GPT: called function " + function_name)
+          
+          reminder = json.loads(output.tool_calls[0].function.arguments).get("reminder_text")
+          
+          chosen_function = eval(function_name)
+          
+          response = chosen_function(reminder)
+          
+          messages.append({"role": "function", "name": function_name, "content": response})
+          
+          response = fix_format(messages)
+          
+          return response
+        
         
     else:
         print("Function does not exist")
@@ -168,7 +186,6 @@ def chat(message):
       
       
       
-
 def fix_format(messages):
 
     response = openai_client.chat.completions.create(

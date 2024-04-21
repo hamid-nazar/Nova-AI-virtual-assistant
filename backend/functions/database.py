@@ -12,7 +12,7 @@ def get_recent_messages():
   #                      "content": "You are interviewing the user for a job as a retail assistant. Ask short questions that are relevant to the junior position. Your name is Adam. The user is called Hamid. Keep responses under 30 words. "}
   
   # learn_instruction = {"role": "system",
-  #                      "content": "You are a helpful and versatile assistant. Your name is Rachel.The user is called Hamid. Keep responses under 30 words. "}
+  #                      "content": "You are a helpful and versatile assistant. Your name is Nova.The user is called Hamid. Keep responses under 30 words. "}
   # # Initialize messages
   # messages = []
 

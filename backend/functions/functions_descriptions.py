@@ -76,4 +76,53 @@ descriptions = [
             "returns": "The weather in the city."
         }
     },
+    {
+    "type": "function",
+    "function": {
+        "name": "add_reminder",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "reminder_text": {
+                    "type": "string",
+                    "description": "The text of the reminder to add."
+                }
+            },
+            "required": ["reminder_text"]
+        }
+    }
+},
+    {
+    "type": "function",
+    "function": {
+        "name": "remove_reminder",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "reminder_text": {
+                    "type": "string",
+                    "description": "The text of the reminder to remove."
+                }
+            },
+            "required": ["reminder_text"]
+        }
+    }
+    },
+{
+    "type": "function",
+    "function": {
+        "name":"get_exchange_rate_info_for_currency",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "currency": {
+                    "type": "string",
+                    "description": "The currency to get the exchange rate for, e.g. EUR"
+                }
+            },
+            "required": ["currency"]
+        }
+    }
+}
+
 ]
