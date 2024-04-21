@@ -1,7 +1,6 @@
 # Nova - An intelligent virtual assistant 
 
-![2024-04-21 16-14-13](https://github.com/hamid-nazar/Nova-AI-virtual-assistant/assets/89256888/5a7d0f3d-3d9b-417e-86d1-7d2d515d7848)
-
+<img width="755" alt="nova" src="https://github.com/hamid-nazar/Nova-AI-virtual-assistant/assets/89256888/5d7862c6-d170-44b8-a976-b1ae59cd6cda">
 
   Nova is a virtual web voice assistant implemented using ChatGPT 3.5 and Elevenlabs. It creates humanlike responses to your input and reads them out using some of the best AI text generation, voice transcription and text-to-speech technology available. The purpose of the project is to attempt to utilize the new major improvements in artificial intelligence to create a voice assistant that is more adaptive and more capable of humanlike behaviour and responses than voice assistants utilizing older technology. 
 
