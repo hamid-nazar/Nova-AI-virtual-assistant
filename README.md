@@ -57,7 +57,7 @@
 
   If yarn is not installed: `npm install --global yarn`
 
-  - `cd generative-AI/front` 
+  - `cd generative-AI/frontend` 
   - `yarn install` 
   - `yarn run dev`
 
